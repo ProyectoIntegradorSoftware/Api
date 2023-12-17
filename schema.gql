@@ -22,9 +22,19 @@ type LogoutMensaje {
   mensaje: String!
 }
 
+type ProductModel {
+  id: ID!
+  nombre: String!
+  sku: String!
+  precio: String!
+  descripcion: String!
+}
+
 type Query {
   getUser(id: String!): UserModel!
   listUsers: [UserModel!]!
+  getProduct(id: String!): ProductModel!
+  listProducts: [ProductModel!]!
 }
 
 type Mutation {
@@ -33,6 +43,9 @@ type Mutation {
   loginUser(loginUserInput: LoginUserInput!): PayloadModel!
   logoutUser(id: String!): LogoutMensaje!
   deleteUser(id: String!): RespuestaEliminacion!
+  createProduct(createProductInput: CreateProductInput!): ProductModel!
+  updateProduct(updateProductInput: UpdateProductInput!): ProductModel!
+  deleteProduct(id: String!): RespuestaEliminacion!
 }
 
 input CreateUserInput {
@@ -52,4 +65,19 @@ input UpdateUserInput {
 input LoginUserInput {
   correo: String!
   contrasena: String!
+}
+
+input CreateProductInput {
+  nombre: String!
+  sku: String!
+  precio: String!
+  descripcion: String!
+}
+
+input UpdateProductInput {
+  id: ID!
+  nombre: String
+  sku: String
+  precio: String
+  descripcion: String
 }

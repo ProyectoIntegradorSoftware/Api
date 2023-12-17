@@ -1,23 +1,21 @@
-/* eslint-disable prettier/prettier */
-
 import { Global, Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { join } from 'path';
 
-import { UserResolver } from 'src/graphql/resolvers/user.resolver';
-import { UserClient } from 'src/grpc/clients/user.client';
+import { ProductResolver } from 'src/graphql/resolvers/product.resolver';
+import { ProductClient } from 'src/grpc/clients/product.client';
 
 @Global()
 @Module({
   imports: [
-    
+
     ClientsModule.register([
       {
-        name: 'USER_SERVICE',
+        name: 'Product_SERVICE',
         transport: Transport.GRPC,
         options: {
           package: 'proto',
-          protoPath: join(__dirname, '../../src/grpc/proto/user.proto'),
+          protoPath: join(__dirname, '../../src/grpc/proto/product.proto'),
           url: 'localhost:50051',
         },
       },
@@ -25,7 +23,7 @@ import { UserClient } from 'src/grpc/clients/user.client';
   
 
   ],
-  providers: [UserResolver, UserClient],
-  exports: [UserClient],
+  providers: [ProductResolver, ProductClient],
+  exports: [ProductClient],
 })
-export class UserModule {}
+export class ProductModule {}
