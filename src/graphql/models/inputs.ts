@@ -1,6 +1,6 @@
-/* eslint-disable prettier/prettier */
+
 import { InputType, Field, ID } from '@nestjs/graphql';
-//import { User } from 'src/grpc/interfaces/user.dto';
+
 
 @InputType()
 export class CreateUserInput {
@@ -18,21 +18,20 @@ export class CreateUserInput {
 }
 
 @InputType()
-export class CreateTaskInput {
+export class CreateProductInput {
   @Field()
-  titulo: string;
+  nombre: string;
+
+  @Field()
+  sku: string;
+
+  @Field()
+  precio: string;
 
   @Field()
   descripcion: string;
 
-  @Field()
-  fechaInicio: string;
-
-  @Field()
-  fechaTermino: string;
-
-  @Field({ nullable: true })
-  userId?: string;
+  
 }
 
 
@@ -53,24 +52,22 @@ export class UpdateUserInput {
 }
 
 @InputType()
-export class UpdateTaskInput {
+export class UpdateProductInput {
   @Field(() => ID)
   id: string;
 
   @Field({ nullable: true })
-  titulo?: string;
+  nombre?: string;
 
   @Field({nullable: true })
-  descripcion?:string;
+  sku?:string;
 
   @Field({ nullable: true })
-  fechaInicio?: Date;
+  precio?: string;
 
   @Field({ nullable: true })
-  fechaTermino?: Date;
+  descripcion?: string;
 
-  @Field({ nullable: true })
-  userId?: string;
 }
 
 @InputType()
@@ -87,7 +84,7 @@ export class LoginUserInput {
   @Field()
   contrasena: string;
 }
-export class DeleteTaskInput {
+export class DeleteProductInput {
   @Field(() => ID)
   id: string;
 }

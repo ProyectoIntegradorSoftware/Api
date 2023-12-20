@@ -10,8 +10,7 @@ import { UserClient } from 'src/grpc/clients/user.client';
 @Global()
 @Module({
   imports: [
-    // CircuitBreakerModule,
-    // Configuración del cliente gRPC
+    
     ClientsModule.register([
       {
         name: 'USER_SERVICE',
