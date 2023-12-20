@@ -16,7 +16,7 @@ import { ProductClient } from 'src/grpc/clients/product.client';
         options: {
           package: 'proto',
           protoPath: join(__dirname, '../../src/grpc/proto/product.proto'),
-          url: 'localhost:50051',
+          url: 'localhost:50052',
         },
       },
     ]),

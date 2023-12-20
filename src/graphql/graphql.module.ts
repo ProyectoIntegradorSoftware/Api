@@ -4,6 +4,7 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { UserModule } from 'src/users/user.module';
+import { ProductModel } from './models/product.model';
 
 
 @Module({
@@ -12,7 +13,7 @@ import { UserModule } from 'src/users/user.module';
       autoSchemaFile: 'schema.gql', // Puede ser una ruta a un archivo o true para generación automática
       // Otras configuraciones como playground, context, etc.
     }),
-    UserModule,
+    UserModule,ProductModel,
    
   ],
   

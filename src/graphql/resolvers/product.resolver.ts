@@ -13,16 +13,13 @@ import { Observable, catchError, map } from 'rxjs';
 export class ProductResolver {
   constructor(private productClient: ProductClient) {}
 
+
   @Query(() => ProductModel)
-  getProduct(@Args('id') id: string): Observable<ProductModel> {
-    return this.productClient.getProduct({ id }).pipe(
-      map((response) => this.transformProductResponse(response)),
-      catchError((error) => {
-        console.log('Error al obtener Producto', error);
-        throw new Error('Error al obtener el Producto');
-      }),
-    )
+  async getProduct(@Args('id') id: string): Promise<ProductModel> {
+    const response = await this.productClient.getProduct({ id }).toPromise();
+    return this.transformProductResponse(response);
   }
+ 
 
   @Query(() => [ProductModel])
   listProducts(): Observable<ProductModel[]> {

@@ -10,8 +10,7 @@ export class ProductModel {
 
   @Field()
   sku: string;
-
-
+  
   @Field()
   precio: string; 
   
